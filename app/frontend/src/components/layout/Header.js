@@ -38,6 +38,11 @@ export class Header extends Component {
                         Login
           </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/password_reset" className="nav-link">
+                        Forgot
+          </Link>
+                </li>
             </ul>
         );
 

@@ -11,6 +11,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
 } from './types';
+import { AuthUrls } from './urls'
 
 // CHECK TOKEN & LOAD USER
 export const loadUser = () => (dispatch, getState) => {
@@ -123,3 +124,41 @@ export const tokenConfig = (getState) => {
 
     return config;
 };
+
+export function resetPassword(formValues, dispatch, props) {
+    const resetPasswordUrl = AuthUrls.RESET_PASSWORD;
+
+    return axios.post(resetPasswordUrl, formValues)
+        .then(response => {
+            // redirect to reset done page
+            history.push("/reset_password_done");
+        }).catch((error) => {
+            //console.log(error)
+            // If request is bad...
+            // Show an error to the user
+            // const processedError = processServerError(error.response.data);
+            // throw new SubmissionError(processedError);
+        });
+}
+
+export function confirmPasswordChange(formValues, dispatch, props) {
+    const { uid, token } = props.match.params;
+    const resetPasswordConfirmUrl = AuthUrls.RESET_PASSWORD_CONFIRM;
+    const data = Object.assign(formValues, { uid, token });
+
+    return axios.post(resetPasswordConfirmUrl, data)
+        .then(response => {
+            dispatch(notifSend({
+                message: "Password has been reset successfully, please log in",
+                kind: "info",
+                dismissAfter: 5000
+            }));
+
+            history.push("/login");
+        }).catch((error) => {
+            // If request is bad...
+            // Show an error to the user
+            // const processedError = processServerError(error.response.data);
+            // throw new SubmissionError(processedError);
+        });
+}

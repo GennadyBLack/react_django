@@ -10,6 +10,9 @@ import Dashboard from './leads/Dashboard';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
+import PasswordReset from './accounts/PasswordReset'
+import PasswordResetConfirm from './accounts/PasswordResetConfirm'
+import PasswordResetDone from './accounts/PasswordResetDone'
 import PrivateRoute from './common/PrivateRoute.js';
 
 import { Provider } from 'react-redux';
@@ -40,6 +43,10 @@ class App extends Component {
                                     <PrivateRoute exact path="/" component={Dashboard} />
                                     <Route exact path="/register" component={Register} />
                                     <Route exact path="/login" component={Login} />
+                                    <Route exact path="/password_reset" component={PasswordReset} />
+                                    <Route path="/reset_password_done" component={PasswordResetDone} />
+                                    <Route path="/reset/:uid/:token/" component={PasswordResetConfirm} />
+                                    PasswordReset
                                 </Switch>
                             </div>
                         </Fragment>

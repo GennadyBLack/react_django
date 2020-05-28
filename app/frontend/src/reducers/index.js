@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import leads from './leads';
 import errors from './errors';
+import { reducer as formReducer } from "redux-form";
 import messages from './messages';
 import auth from './auth';
 
@@ -9,4 +10,5 @@ export default combineReducers({
     errors,
     messages,
     auth,
+    form: formReducer,
 });
