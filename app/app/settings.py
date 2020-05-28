@@ -42,8 +42,12 @@ INSTALLED_APPS = [
      'knox',
      'frontend',
      'accounts',
+     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

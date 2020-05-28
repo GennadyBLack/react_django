@@ -10,7 +10,7 @@ import Dashboard from './leads/Dashboard';
 import Alerts from './layout/Alerts';
 import Login from './accounts/Login';
 import Register from './accounts/Register';
-import PrivateRoute from './common/PrivateRoute';
+import PrivateRoute from './common/PrivateRoute.js';
 
 import { Provider } from 'react-redux';
 import store from '../store';

@@ -20,5 +20,6 @@ urlpatterns = [
     path('',include('frontend.urls')),
     path('admin-page/', admin.site.urls),
     path('', include('leads.urls')),
-    path('', include('accounts.urls'))
+    path('', include('accounts.urls')),
+    path(rest-auth/', include('rest_auth.urls'))
 ]
